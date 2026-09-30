@@ -1,0 +1,40 @@
+{% extends 'oscar/dashboard/layout.html' %}
+{% load i18n %}
+
+{% block body_class %}{{ block.super }} create-page{% endblock %}
+
+{% block title %}
+    {% blocktrans with name=object.display_name %}Delete file '{{ name }}'?{% endblocktrans %}
+    | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'dashboard:index' %}">{% trans "Dashboard" %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dashboard:simplefiles-list' %}">{% trans "Files" %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">
+                {% blocktrans with name=object.display_name %}Delete file '{{ name }}'?{% endblocktrans %}
+            </li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block headertext %}
+    {% blocktrans with name=object.display_name %}Delete file '{{ name }}'?{% endblocktrans %}
+{% endblock %}
+
+{% block dashboard_content %}
+    <div class="table-header">
+        <h2>{% trans "Delete file" %}</h2>
+    </div>
+    <form id="delete_simplefile_form" method="post" class="card card-body">
+        {% csrf_token %}
+        {{ form }}
+        <p>{% blocktrans with name=object.display_name %}Delete file <strong>{{ name }}</strong> - are you sure?{% endblocktrans %}</p>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger" data-loading-text="{% trans 'Deleting...' %}">{% trans "Delete" %}</button>
+            {% trans "or" %} <a href="{% url 'dashboard:simplefiles-list' %}">{% trans "cancel" %}</a>.
+        </div>
+    </form>
+{% endblock %}

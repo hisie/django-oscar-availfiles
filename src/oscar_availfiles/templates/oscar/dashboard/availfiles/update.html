@@ -1,7 +1,7 @@
 {% extends 'oscar/dashboard/layout.html' %}
 {% load i18n %}
 
-{% block body_class %}{{ block.super }} create-page simplefiles{% endblock %}
+{% block body_class %}{{ block.super }} create-page availfiles{% endblock %}
 {% block title %}
 {% trans "Upload a file" %} | {{ block.super }}
 {% endblock %}
@@ -10,7 +10,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'dashboard:index' %}">{% trans "Dashboard" %}</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'dashboard:simplefiles-list' %}">{% trans "Files" %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dashboard:availfiles-list' %}">{% trans "Files" %}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{% trans "Upload a file" %}</li>
         </ol>
     </nav>
@@ -21,12 +21,12 @@
 {% endblock %}
 
 {% block dashboard_content %}
-<form id="simplefile_upload_form" method="post" class="card card-body form-stacked" enctype="multipart/form-data">
+<form id="availfile_upload_form" method="post" class="card card-body form-stacked" enctype="multipart/form-data">
     {% csrf_token %}
     {% include 'oscar/dashboard/partials/form_fields.html' with form=form %}
     <div class="form-actions">
         <button class="btn btn-primary" type="submit" data-loading-text="{% trans 'Uploading...' %}">{% trans "Upload" %}</button>
-        {% trans "or" %} <a href="{% url 'dashboard:simplefiles-list' %}">{% trans "cancel" %}</a>.
+        {% trans "or" %} <a href="{% url 'dashboard:availfiles-list' %}">{% trans "cancel" %}</a>.
     </div>
 </form>
 {% endblock dashboard_content %}

@@ -1,6 +1,6 @@
-# django-oscar-simplefiles
+# django-oscar-availfiles
 
-Wires [django-simplefiles](https://github.com/hisie/django-simplefiles)
+Wires [django-availfiles](https://github.com/hisie/django-availfiles)
 into [django-oscar](https://github.com/django-oscar/django-oscar): an
 Oscar dashboard section to upload/browse files, plus the pieces needed to
 let editors link to them from a TinyMCE "Insert Link" dialog in any
@@ -8,14 +8,14 @@ dashboard wysiwyg field (a blog post body, a product description, ...).
 
 ## What this package does, and doesn't, do
 
-- An Oscar dashboard section under `/dashboard/simplefiles/`: list/
+- An Oscar dashboard section under `/dashboard/availfiles/`: list/
   upload/delete. Uploads are rejected if their content-type starts with
   `image/` by default (configurable via
-  `OSCAR_SIMPLEFILES_REJECTED_CONTENT_TYPES`) — images already have their
+  `OSCAR_AVAILFILES_REJECTED_CONTENT_TYPES`) — images already have their
   own drag-and-drop-into-the-editor upload flow in a typical Oscar
   dashboard TinyMCE setup; this library is for everything else (PDFs,
   spec sheets, downloadable docs).
-- A JSON listing endpoint (`dashboard:simplefiles-list-json`, optionally
+- A JSON listing endpoint (`dashboard:availfiles-list-json`, optionally
   filtered by `?q=<term>` against label/filename) — read-only, meant to
   feed a TinyMCE `file_picker_callback`, not a general API.
 - It does **not** upload new files from inside the TinyMCE dialog itself
@@ -27,19 +27,19 @@ dashboard wysiwyg field (a blog post body, a product description, ...).
 ## Installation
 
 ```
-uv add django-oscar-simplefiles
+uv add django-oscar-availfiles
 ```
 
 ```python
 INSTALLED_APPS = [
     ...,
-    "simplefiles",
-    "oscar_simplefiles.apps.OscarSimpleFilesConfig",
-    "oscar_simplefiles.dashboard.apps.SimpleFilesDashboardConfig",
+    "availfiles",
+    "oscar_availfiles.apps.OscarAvailFilesConfig",
+    "oscar_availfiles.dashboard.apps.AvailFilesDashboardConfig",
 ]
 ```
 
-Run `manage.py migrate` — `simplefiles` ships the actual model migration;
+Run `manage.py migrate` — `availfiles` ships the actual model migration;
 this package has none of its own.
 
 ## Wiring the dashboard in
@@ -57,11 +57,11 @@ from oscar.apps.dashboard.apps import DashboardConfig as OscarDashboardConfig
 class DashboardConfig(OscarDashboardConfig):
     def ready(self):
         super().ready()
-        self.simplefiles_app = apps.get_app_config("simplefiles_dashboard")
+        self.availfiles_app = apps.get_app_config("availfiles_dashboard")
 
     def get_urls(self):
         urls = super().get_urls()
-        urls.append(path("simplefiles/", include(self.simplefiles_app.urls[0])))
+        urls.append(path("availfiles/", include(self.availfiles_app.urls[0])))
         return urls
 ```
 
@@ -74,11 +74,11 @@ upload handler would be wired, if one exists. Add a `file_picker_callback`
 to `tinyConfig` that opens a small popup fed by the JSON endpoint above:
 
 ```javascript
-function simplefilesPickerCallback(callback, value, meta) {
+function availfilesPickerCallback(callback, value, meta) {
     if (meta.filetype !== 'file') {
         return;  // only handling the plain "link" picker, not image/media
     }
-    fetch('{% url "dashboard:simplefiles-list-json" %}')
+    fetch('{% url "dashboard:availfiles-list-json" %}')
         .then(function (response) { return response.json(); })
         .then(function (data) {
             var win = tinymce.activeEditor.windowManager.open({
@@ -102,7 +102,7 @@ function simplefilesPickerCallback(callback, value, meta) {
         });
 }
 
-options.tinyConfig.file_picker_callback = simplefilesPickerCallback;
+options.tinyConfig.file_picker_callback = availfilesPickerCallback;
 options.tinyConfig.file_picker_types = 'file';
 ```
 
@@ -117,5 +117,5 @@ uv sync
 uv run pytest
 ```
 
-Requires `django-simplefiles`, wired in `pyproject.toml`'s
+Requires `django-availfiles`, wired in `pyproject.toml`'s
 `[tool.uv.sources]` as a local path dependency until it's published.

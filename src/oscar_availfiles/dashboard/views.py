@@ -1,3 +1,4 @@
+from availfiles.models import AvailFile
 from django.conf import settings
 from django.contrib import messages
 from django.db.models import Q
@@ -6,10 +7,9 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views import generic
 from oscar.core.loading import get_classes
-from simplefiles.models import SimpleFile
 
-SimpleFileSearchForm, SimpleFileUploadForm = get_classes(
-    "oscar_simplefiles.dashboard.forms", ("SimpleFileSearchForm", "SimpleFileUploadForm")
+AvailFileSearchForm, AvailFileUploadForm = get_classes(
+    "oscar_availfiles.dashboard.forms", ("AvailFileSearchForm", "AvailFileUploadForm")
 )
 
 
@@ -17,10 +17,10 @@ def _label_or_filename(term):
     return Q(label__icontains=term) | Q(original_filename__icontains=term)
 
 
-class SimpleFileListView(generic.ListView):
-    template_name = "oscar/dashboard/simplefiles/index.html"
-    model = SimpleFile
-    form_class = SimpleFileSearchForm
+class AvailFileListView(generic.ListView):
+    template_name = "oscar/dashboard/availfiles/index.html"
+    model = AvailFile
+    form_class = AvailFileSearchForm
     paginate_by = settings.OSCAR_DASHBOARD_ITEMS_PER_PAGE
     desc_template = "%(main_filter)s%(label_filter)s"
 
@@ -48,10 +48,10 @@ class SimpleFileListView(generic.ListView):
         return context
 
 
-class SimpleFileCreateView(generic.CreateView):
-    template_name = "oscar/dashboard/simplefiles/update.html"
-    model = SimpleFile
-    form_class = SimpleFileUploadForm
+class AvailFileCreateView(generic.CreateView):
+    template_name = "oscar/dashboard/availfiles/update.html"
+    model = AvailFile
+    form_class = AvailFileUploadForm
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -63,26 +63,26 @@ class SimpleFileCreateView(generic.CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse("dashboard:simplefiles-list")
+        return reverse("dashboard:availfiles-list")
 
 
-class SimpleFileDeleteView(generic.DeleteView):
-    template_name = "oscar/dashboard/simplefiles/delete.html"
-    model = SimpleFile
+class AvailFileDeleteView(generic.DeleteView):
+    template_name = "oscar/dashboard/availfiles/delete.html"
+    model = AvailFile
 
     def get_success_url(self):
         messages.success(self.request, _("Deleted file '%s'") % self.object.display_name)
-        return reverse("dashboard:simplefiles-list")
+        return reverse("dashboard:availfiles-list")
 
 
-class SimpleFileJSONListView(generic.View):
+class AvailFileJSONListView(generic.View):
     """Feeds the TinyMCE file_picker_callback wired in the host project's
     own dashboard layout override (see this package's README) — a plain
     JSON listing, most recent first, optionally filtered by ?q=<term>
     against label/filename. Staff-only, same as every other view here."""
 
     def get(self, request, *args, **kwargs):
-        queryset = SimpleFile.objects.all()
+        queryset = AvailFile.objects.all()
         term = request.GET.get("q")
         if term:
             queryset = queryset.filter(_label_or_filename(term))

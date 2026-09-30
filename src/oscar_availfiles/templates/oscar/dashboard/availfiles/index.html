@@ -1,7 +1,7 @@
 {% extends 'oscar/dashboard/layout.html' %}
 {% load i18n %}
 
-{% block body_class %}{{ block.super }} simplefiles{% endblock %}
+{% block body_class %}{{ block.super }} availfiles{% endblock %}
 
 {% block title %}
     {% trans "Files" %} | {{ block.super }}
@@ -18,7 +18,7 @@
 
 {% block header %}
     <div class="page-header">
-        <a href="{% url 'dashboard:simplefiles-create' %}" class="btn btn-primary float-right">
+        <a href="{% url 'dashboard:availfiles-create' %}" class="btn btn-primary float-right">
             <i class="fas fa-plus-circle"></i> {% trans "Upload a file" %}
         </a>
         <h1>{% trans "Files" %}</h1>
@@ -30,12 +30,12 @@
         <h3><i class="fas fa-search"></i> {% trans "Search" %}</h3>
     </div>
     <div class="card card-body">
-        <form id="search_simplefile_form" method="get" class="form-inline">
+        <form id="search_availfile_form" method="get" class="form-inline">
             {% include "oscar/dashboard/partials/form_fields_inline.html" with form=form %}
             <button type="submit" class="btn btn-primary mr-2" data-loading-text="{% trans 'Searching...' %}">
                 {% trans "Search" %}
             </button>
-            <a href="{% url 'dashboard:simplefiles-list' %}" class="btn btn-secondary">{% trans "Reset" %}</a>
+            <a href="{% url 'dashboard:availfiles-list' %}" class="btn btn-secondary">{% trans "Reset" %}</a>
         </form>
     </div>
 
@@ -43,7 +43,7 @@
         <h2><i class="fas fa-file"></i> {{ queryset_description }}</h2>
     </div>
 
-    {% if simplefile_list %}
+    {% if availfile_list %}
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
@@ -54,13 +54,13 @@
                 </tr>
             </thead>
             <tbody>
-                {% for simplefile in simplefile_list %}
+                {% for availfile in availfile_list %}
                     <tr>
-                        <td>{{ simplefile.display_name }}</td>
-                        <td>{{ simplefile.uploaded_at }}</td>
-                        <td><a href="{{ simplefile.file.url }}" target="_blank">{{ simplefile.file.url }}</a></td>
+                        <td>{{ availfile.display_name }}</td>
+                        <td>{{ availfile.uploaded_at }}</td>
+                        <td><a href="{{ availfile.file.url }}" target="_blank">{{ availfile.file.url }}</a></td>
                         <td>
-                            <a class="btn btn-secondary" href="{% url 'dashboard:simplefiles-delete' pk=simplefile.id %}">
+                            <a class="btn btn-secondary" href="{% url 'dashboard:availfiles-delete' pk=availfile.id %}">
                                 {% trans "Delete" %}
                             </a>
                         </td>

@@ -1,7 +1,7 @@
+from availfiles.models import AvailFile
 from django import forms
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
-from simplefiles.models import SimpleFile
 
 # Images already have their own upload flow (drag-and-drop straight into
 # a wysiwyg field, urbanplants/dashboard/views.py's EditorImageUploadView)
@@ -12,19 +12,19 @@ from simplefiles.models import SimpleFile
 DEFAULT_REJECTED_PREFIXES = ("image/",)
 
 
-class SimpleFileSearchForm(forms.Form):
+class AvailFileSearchForm(forms.Form):
     label = forms.CharField(required=False, label=_("Label or filename"))
 
 
-class SimpleFileUploadForm(forms.ModelForm):
+class AvailFileUploadForm(forms.ModelForm):
     class Meta:
-        model = SimpleFile
+        model = AvailFile
         fields = ("file", "label")
 
     def clean_file(self):
         upload = self.cleaned_data["file"]
         rejected_prefixes = getattr(
-            settings, "OSCAR_SIMPLEFILES_REJECTED_CONTENT_TYPES", DEFAULT_REJECTED_PREFIXES
+            settings, "OSCAR_AVAILFILES_REJECTED_CONTENT_TYPES", DEFAULT_REJECTED_PREFIXES
         )
         content_type = getattr(upload, "content_type", "") or ""
         if any(content_type.startswith(prefix) for prefix in rejected_prefixes):

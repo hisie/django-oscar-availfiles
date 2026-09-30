@@ -297,13 +297,13 @@ wheels = [
 ]
 
 [[package]]
-name = "django-oscar-simplefiles"
+name = "django-oscar-availfiles"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "django" },
     { name = "django-oscar" },
-    { name = "django-simplefiles" },
+    { name = "django-availfiles" },
 ]
 
 [package.dev-dependencies]
@@ -321,7 +321,7 @@ dev = [
 requires-dist = [
     { name = "django", specifier = ">=5.2,<5.3" },
     { name = "django-oscar", specifier = ">=4.2,<4.3" },
-    { name = "django-simplefiles", editable = "../django-simplefiles" },
+    { name = "django-availfiles", editable = "../django-availfiles" },
 ]
 
 [package.metadata.requires-dev]
@@ -348,9 +348,9 @@ wheels = [
 ]
 
 [[package]]
-name = "django-simplefiles"
+name = "django-availfiles"
 version = "0.1.0"
-source = { editable = "../django-simplefiles" }
+source = { editable = "../django-availfiles" }
 dependencies = [
     { name = "django" },
 ]

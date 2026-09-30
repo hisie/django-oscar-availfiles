@@ -1,7 +1,7 @@
 [project]
-name = "django-oscar-simplefiles"
+name = "django-oscar-availfiles"
 version = "0.1.0"
-description = "Wires django-simplefiles into django-oscar: a dashboard section to upload/browse files, plus a TinyMCE file-picker so editors can link to them from any wysiwyg field."
+description = "Wires django-availfiles into django-oscar: a dashboard section to upload/browse files, plus a TinyMCE file-picker so editors can link to them from any wysiwyg field."
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "BSD-3-Clause" }
@@ -20,13 +20,13 @@ classifiers = [
 dependencies = [
     "django>=5.2,<5.3",
     "django-oscar>=4.2,<4.3",
-    "django-simplefiles>=0.1.0,<0.2",
+    "django-availfiles>=0.1.0,<0.2",
 ]
 
 [project.urls]
-Homepage = "https://github.com/hisie/django-oscar-simplefiles"
-Repository = "https://github.com/hisie/django-oscar-simplefiles"
-Issues = "https://github.com/hisie/django-oscar-simplefiles/issues"
+Homepage = "https://github.com/hisie/django-oscar-availfiles"
+Repository = "https://github.com/hisie/django-oscar-availfiles"
+Issues = "https://github.com/hisie/django-oscar-availfiles/issues"
 
 [dependency-groups]
 dev = [
@@ -40,15 +40,15 @@ dev = [
 ]
 
 [tool.uv.sources]
-# Not published yet — see django-simplefiles's own repo.
-django-simplefiles = { path = "../django-simplefiles", editable = true }
+# Not published yet — see django-availfiles's own repo.
+django-availfiles = { path = "../django-availfiles", editable = true }
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/oscar_simplefiles"]
+packages = ["src/oscar_availfiles"]
 
 [tool.black]
 line-length = 100
@@ -74,4 +74,4 @@ testpaths = ["tests"]
 pythonpath = ["."]
 
 [tool.coverage.run]
-source = ["src/oscar_simplefiles"]
+source = ["src/oscar_availfiles"]

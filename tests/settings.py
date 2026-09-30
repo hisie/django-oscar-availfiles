@@ -64,9 +64,9 @@ INSTALLED_APPS = [
     "treebeard",
     "django_tables2",
     # The packages under test.
-    "simplefiles",
-    "oscar_simplefiles.apps.OscarSimpleFilesConfig",
-    "oscar_simplefiles.dashboard.apps.SimpleFilesDashboardConfig",
+    "availfiles",
+    "oscar_availfiles.apps.OscarAvailFilesConfig",
+    "oscar_availfiles.dashboard.apps.AvailFilesDashboardConfig",
 ]
 
 MIDDLEWARE = [

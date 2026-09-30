@@ -252,6 +252,28 @@ wheels = [
 ]
 
 [[package]]
+name = "django-availfiles"
+version = "0.2.0"
+source = { editable = "../django-availfiles" }
+dependencies = [
+    { name = "django" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "django", specifier = ">=5.2,<5.3" }]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "black" },
+    { name = "coverage" },
+    { name = "django-stubs" },
+    { name = "isort" },
+    { name = "mypy" },
+    { name = "pytest" },
+    { name = "pytest-django" },
+]
+
+[[package]]
 name = "django-extra-views"
 version = "0.16.0"
 source = { registry = "https://pypi.org/simple" }
@@ -298,12 +320,12 @@ wheels = [
 
 [[package]]
 name = "django-oscar-availfiles"
-version = "0.1.0"
+version = "0.2.0"
 source = { editable = "." }
 dependencies = [
     { name = "django" },
-    { name = "django-oscar" },
     { name = "django-availfiles" },
+    { name = "django-oscar" },
 ]
 
 [package.dev-dependencies]
@@ -320,8 +342,8 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = ">=5.2,<5.3" },
-    { name = "django-oscar", specifier = ">=4.2,<4.3" },
     { name = "django-availfiles", editable = "../django-availfiles" },
+    { name = "django-oscar", specifier = ">=4.2,<4.3" },
 ]
 
 [package.metadata.requires-dev]
@@ -345,28 +367,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/0f/82/479b070133cd493cad0f59bc04d6dd3e2e88b2c1f48cd6f54fd897225199/django_phonenumber_field-8.5.0.tar.gz", hash = "sha256:19c606fda7bb25630c4913f7ac83c1824186ea17e2e4c6dc9aa9373e8f5843c5", size = 46311, upload-time = "2026-07-23T12:24:16.471Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/77/14/4e33f4055afbf517ac3223371334f6f3226beecc92b781131a6eb6eeda1c/django_phonenumber_field-8.5.0-py3-none-any.whl", hash = "sha256:a6dd71250f7fd0724aad995df01bdb4ac457a65622f120d0d623792fe8283798", size = 69514, upload-time = "2026-07-23T12:24:14.955Z" },
-]
-
-[[package]]
-name = "django-availfiles"
-version = "0.1.0"
-source = { editable = "../django-availfiles" }
-dependencies = [
-    { name = "django" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "django", specifier = ">=5.2,<5.3" }]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "black" },
-    { name = "coverage" },
-    { name = "django-stubs" },
-    { name = "isort" },
-    { name = "mypy" },
-    { name = "pytest" },
-    { name = "pytest-django" },
 ]
 
 [[package]]

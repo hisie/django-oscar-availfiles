@@ -1,6 +1,6 @@
 [project]
 name = "django-oscar-availfiles"
-version = "0.2.0"
+version = "0.2.1"
 description = "Wires django-availfiles into django-oscar: a dashboard section to upload/browse files, plus a TinyMCE file-picker so editors can link to them from any wysiwyg field."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -20,7 +20,7 @@ classifiers = [
 dependencies = [
     "django>=5.2,<5.3",
     "django-oscar>=4.2,<4.3",
-    "django-availfiles>=0.2.0,<0.3",
+    "django-availfiles>=0.2.0,<1.0",
 ]
 
 [project.urls]
@@ -38,10 +38,6 @@ dev = [
     "pytest-django",
     "django-stubs",
 ]
-
-[tool.uv.sources]
-# Not published yet — see django-availfiles's own repo.
-django-availfiles = { path = "../django-availfiles", editable = true }
 
 [build-system]
 requires = ["hatchling"]

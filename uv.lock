@@ -254,23 +254,13 @@ wheels = [
 [[package]]
 name = "django-availfiles"
 version = "0.2.0"
-source = { editable = "../django-availfiles" }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "django" },
 ]
-
-[package.metadata]
-requires-dist = [{ name = "django", specifier = ">=5.2,<5.3" }]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "black" },
-    { name = "coverage" },
-    { name = "django-stubs" },
-    { name = "isort" },
-    { name = "mypy" },
-    { name = "pytest" },
-    { name = "pytest-django" },
+sdist = { url = "https://files.pythonhosted.org/packages/9e/02/022485d8f35a96e4540b98aa36e286be9136f5f88b1f781c10889e6d1770/django_availfiles-0.2.0.tar.gz", hash = "sha256:32b3abd3112ea5d353431b33af7cdaf85f4ff626eb5961fd78d8eee41d30abec", size = 44675, upload-time = "2026-10-02T06:59:46.878Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f6/51/fe8f2c0faa68b15500251dc4a6efaf3cd8bc2adb6ba38121c4da0586cbde/django_availfiles-0.2.0-py3-none-any.whl", hash = "sha256:0eb63827359bcf99e42d1262edb55249dc93cf922209d36ea6694a5511b68271", size = 4865, upload-time = "2026-10-02T06:59:45.55Z" },
 ]
 
 [[package]]
@@ -320,7 +310,7 @@ wheels = [
 
 [[package]]
 name = "django-oscar-availfiles"
-version = "0.2.0"
+version = "0.2.1"
 source = { editable = "." }
 dependencies = [
     { name = "django" },
@@ -342,7 +332,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = ">=5.2,<5.3" },
-    { name = "django-availfiles", editable = "../django-availfiles" },
+    { name = "django-availfiles", specifier = ">=0.2.0,<1.0" },
     { name = "django-oscar", specifier = ">=4.2,<4.3" },
 ]
 

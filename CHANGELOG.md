@@ -5,6 +5,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-07
+
+### Added
+
+- Spanish translation (`oscar_availfiles/locale/es`, `.po` and compiled
+  `.mo` both committed and shipped in the wheel): the dashboard pages
+  (list, upload, delete), form labels and messages.
+- `oscar_availfiles/locale/en`: the English source catalogue (empty
+  `msgstr`s, `.po` and `.mo`), the same reference template Django and Oscar
+  ship. No behaviour change: the `msgid` is the English text.
+
+### Changed
+
+- The app's verbose name ("Avail files (Oscar integration)") is now a
+  translatable string.
+
 ## [0.2.1] - 2026-10-02
 
 ### Changed
@@ -33,6 +49,7 @@ built under the old name but never actually published.
   already-uploaded file from any wysiwyg field's "Insert Link" dialog.
 - 8 tests, 97% coverage.
 
-[Unreleased]: https://github.com/hisie/django-oscar-availfiles/compare/0.2.1...HEAD
+[Unreleased]: https://github.com/hisie/django-oscar-availfiles/compare/0.3.0...HEAD
+[0.3.0]: https://github.com/hisie/django-oscar-availfiles/compare/0.2.1...0.3.0
 [0.2.1]: https://github.com/hisie/django-oscar-availfiles/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/hisie/django-oscar-availfiles/releases/tag/0.2.0

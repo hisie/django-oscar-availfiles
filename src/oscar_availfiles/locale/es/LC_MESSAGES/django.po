@@ -1,0 +1,95 @@
+# Spanish translations for django-oscar-availfiles.
+msgid ""
+msgstr ""
+"Project-Id-Version: django-oscar-availfiles\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Avail files (Oscar integration)"
+msgstr "Archivos disponibles (integración con Oscar)"
+
+msgid "Avail files dashboard"
+msgstr "Panel de archivos disponibles"
+
+msgid "Label or filename"
+msgstr "Etiqueta o nombre de archivo"
+
+msgid "This file type isn't accepted here — use the image upload in the editor instead."
+msgstr "Aquí no se admite este tipo de archivo: utilice la subida de imágenes del editor."
+
+msgid "All files"
+msgstr "Todos los archivos"
+
+#, python-format
+msgid " matching '%s'"
+msgstr " que coinciden con '%s'"
+
+#, python-format
+msgid "File '%s' uploaded"
+msgstr "Archivo '%s' subido"
+
+#, python-format
+msgid "Deleted file '%s'"
+msgstr "Archivo '%s' eliminado"
+
+#, python-format
+msgid "Delete file '%(name)s'?"
+msgstr "¿Eliminar el archivo '%(name)s'?"
+
+msgid "Dashboard"
+msgstr "Panel"
+
+msgid "Files"
+msgstr "Archivos"
+
+msgid "Delete file"
+msgstr "Eliminar archivo"
+
+#, python-format
+msgid "Delete file <strong>%(name)s</strong> - are you sure?"
+msgstr "¿Seguro que quiere eliminar el archivo <strong>%(name)s</strong>?"
+
+msgid "Deleting..."
+msgstr "Borrando..."
+
+msgid "Delete"
+msgstr "Eliminar"
+
+msgid "or"
+msgstr "o"
+
+msgid "cancel"
+msgstr "cancelar"
+
+msgid "Upload a file"
+msgstr "Subir un archivo"
+
+msgid "Search"
+msgstr "Buscar"
+
+msgid "Searching..."
+msgstr "Buscando..."
+
+msgid "Reset"
+msgstr "Reiniciar"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Uploaded"
+msgstr "Subido"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "No files found."
+msgstr "No se han encontrado archivos."
+
+msgid "Uploading..."
+msgstr "Subiendo..."
+
+msgid "Upload"
+msgstr "Subir"

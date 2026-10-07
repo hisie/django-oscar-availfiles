@@ -110,6 +110,23 @@ options.tinyConfig.file_picker_types = 'file';
 — TinyMCE also offers `image`/`media` pickers, which this package doesn't
 handle; leave those to whatever already handles image uploads.)
 
+## Translations
+
+The package ships a Spanish translation (`src/oscar_availfiles/locale/es/`).
+Both the `.po` source and the compiled `.mo` are committed, so the wheel
+includes the `.mo` and nothing needs compiling on install. After editing a
+`.po`, recompile before releasing:
+
+```bash
+msgfmt -o src/oscar_availfiles/locale/es/LC_MESSAGES/django.mo \
+    src/oscar_availfiles/locale/es/LC_MESSAGES/django.po
+```
+
+New strings are extracted with `django-admin makemessages -l es` run from
+`src/oscar_availfiles/`. A project can override any single string in its own
+`LOCALE_PATHS` without copying the whole catalogue. The `AvailFile` model's
+own strings live in `django-availfiles`, which has its own catalogue.
+
 ## Development
 
 ```

@@ -1,6 +1,6 @@
 [project]
 name = "django-oscar-availfiles"
-version = "0.2.1"
+version = "0.3.0"
 description = "Wires django-availfiles into django-oscar: a dashboard section to upload/browse files, plus a TinyMCE file-picker so editors can link to them from any wysiwyg field."
 readme = "README.md"
 requires-python = ">=3.12"
